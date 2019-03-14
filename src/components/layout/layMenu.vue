@@ -1,5 +1,5 @@
 <template>
-    <el-menu :collapse="isCollapse" router>
+    <el-menu :collapse="isCollapse" router :collapse-transition="false">
         <el-menu-item index="/">
             <i class="el-icon-menu"></i>
             <span slot="title">首页</span>
@@ -34,6 +34,3 @@
 	}
 </script>
 
-<style scoped>
-
-</style>

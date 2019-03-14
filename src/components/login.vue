@@ -43,35 +43,5 @@
 </script>
 
 <style scoped>
-    .login{
-        width: 100%;
-        height: 100%;
-        text-align: center;
-    }
-    .login-box{
-        width: 400px;
-        margin: 0 auto;
-        position: relative;
-        top: 15%;
-    }
-    .login-logo{
-        font-size: 35px;
-        font-weight: 300;
-        text-align: center;
-        margin-bottom: 25px;
-        color: #444444;
-    }
-    .login-box-body{
-        background-color: #FFFFFF;
-        padding: 20px;
-    }
-    .login-box-msg{
-        color: #666;
-        padding: 0 20px 20px 20px;
-        text-align: center;
-    }
-    .login-btn-item{
-        text-align: right;
-        margin-bottom: 0;
-    }
+
 </style>
