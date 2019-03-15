@@ -156,12 +156,18 @@ header{
 .tree-item{
     width: 100%;
     font-size: 18px;
-    padding-right: 200px;
+    /*position: relative;*/
+    /*padding-right: 200px;*/
+}
+.tree-btn{
+    position: absolute;
+    left: 500px;
 }
 
 .box{
     background-color: #FFFFFF;
     padding: 15px;
+    position: relative;
 }
 .box-header{
     padding-bottom: 15px;

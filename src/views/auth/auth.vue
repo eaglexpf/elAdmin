@@ -18,7 +18,7 @@
                 <el-tree :data="data" show-checkbox node-key="id" default-expand-all :expand-on-click-node="false">
                     <div class="tree-item" slot-scope="{node,data}">
                         <span>{{data.name}}</span>
-                        <span class="pull-right">
+                        <span class="tree-btn">
                             <el-button type="warning" size="mini" @click="updateRoute(data)">修改</el-button>
                             <el-button type="danger" size="mini" @click="deleteRoute(data.id)">删除</el-button>
                         </span>

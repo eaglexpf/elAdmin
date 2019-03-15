@@ -18,26 +18,23 @@ export default new Router({
 			name:'login',
 			component:login
 		},
-		{
-			path:'/aaa',
-			name:'aaa',
-			component:aaa
-		},
+		// {
+		// 	path:'/aaa',
+		// 	name:'aaa',
+		// 	component:aaa
+		// },
 		{
 			path:'/',
 			component:layout,
 			children:[
 				{
 					path:'',
+					name:'home',
 					component:home
 				},
 				{
 					path:'auth',
 					component:auth
-				},
-				{
-					path:'model',
-					component:model
 				}
 			]
 		}
