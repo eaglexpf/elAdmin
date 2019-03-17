@@ -66,9 +66,15 @@ ul {
     padding: 0 20px 20px 20px;
     text-align: center;
 }
+.login-text-item{
+  margin-top: -15px;
+  margin-bottom: 0;
+}
 .login-btn-item{
-    text-align: right;
-    margin-bottom: 0;
+  margin-bottom: 0;
+}
+.login-btn-item button{
+    width: 100%;
 }
 
 /*layout*/

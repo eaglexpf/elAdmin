@@ -8,6 +8,7 @@ const state = {
 	lineHeight:'50px',
 	uuid:'',
 	jwtToken:'',
+  isLogin:false
 }
 
 const getters = {
@@ -19,7 +20,10 @@ const getters = {
 	},
 	jwtToken:function (state) {
 		return state.jwtToken
-	}
+	},
+  isLogin:function (state) {
+    return state.isLogin
+  }
 }
 
 const mutations = {
@@ -31,7 +35,10 @@ const mutations = {
 	},
 	setJWTToken:function (state,token) {
 		state.jwtToken = token
-	}
+	},
+  setIsLogin:function (state,data) {
+    state.isLogin = data
+  }
 }
 
 const actions = {

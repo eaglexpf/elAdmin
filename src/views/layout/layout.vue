@@ -40,21 +40,7 @@
 			}
 		},
 		beforeRouteUpdate(to,from,next){
-			var param = new URLSearchParams();
-			param.append('token',this.token);
-			this.$http.post('/login.check',param).then((response)=>{
-				if (response.data.code!==0){
-					this.$router.push({name:'login'});
-					return
-				}
-				next()
-			}).catch((error)=>{
-				this.$notify.error({
-					title:"网络请求错误",
-					message:error.toString()
-				})
-				this.$router.push({name:'login'});
-			})
+
 		},
 		computed:{
 			isCollapse:function () {
@@ -63,31 +49,19 @@
 			uuid:function () {
 				return this.$store.getters['uuid'];
 			},
-            token:function () {
-                return this.$store.getters['jwtToken'];
-			}
-		},
-        created(){
-			this.loginUUID();
-        },
-		methods:{
-			loginUUID:function () {
-				var param = new URLSearchParams();
-				param.append('uuid',this.uuid);
-				this.$http.post('/login.uuid',param).then((response)=>{
-					if (response.data.code!==0){
-						this.$router.push({name:'login'});
-						return
-					}
-					this.$store.commit('setJWTToken',response.data.data.token);
-				}).catch((error)=>{
-					this.$notify.error({
-						title:"网络请求错误",
-						message:error.toString()
-					})
-					this.$router.push({name:'login'});
-				})
+      token:function () {
+          return this.$store.getters['jwtToken'];
 			},
+      isLogin:function () {
+        return this.$store.getters['isLogin']
+      }
+		},
+    created(){
+			if (this.isLogin===false){
+			  this.$router.push({name:'login'})
+      }
+    },
+		methods:{
 		}
 	}
 </script>
