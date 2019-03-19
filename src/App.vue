@@ -23,9 +23,9 @@
       },
       methods:{
         loginUUID:function () {
-          var param = new URLSearchParams();
-          param.append('uuid',this.uuid);
-          this.$http.post('/login.uuid',param).then((response)=>{
+          this.$http.post('/login.uuid',this.$common.toPostData({
+              uuid:this.uuid
+          })).then((response)=>{
             if (response.data.code!==0){
               this.$store.commit('setIsLogin',false);
               this.$router.push({name:"login"});

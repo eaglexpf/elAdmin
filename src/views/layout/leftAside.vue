@@ -6,7 +6,7 @@
                 <i class="el-icon-menu"></i>
                 <span slot="title">首页</span>
             </el-menu-item>
-            <el-menu-item index="3">
+            <el-menu-item index="table">
                 <i class="el-icon-menu"></i>
                 <span slot="title">导航一{{isCollapse}}</span>
             </el-menu-item>
@@ -19,9 +19,13 @@
                     <i class="el-icon-setting"></i>
                     <span slot="title">权限管理</span>
                 </template>
-                <el-menu-item index="auth">
+                <el-menu-item index="/role">
                     <i class="el-icon-menu"></i>
-                    <span slot="title">模块管理1</span>
+                    <span slot="title">角色管理</span>
+                </el-menu-item>
+                <el-menu-item index="/auth">
+                    <i class="el-icon-menu"></i>
+                    <span slot="title">路由管理</span>
                 </el-menu-item>
             </el-submenu>
         </el-menu>

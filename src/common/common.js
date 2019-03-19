@@ -70,4 +70,14 @@ export default {
 		}
 		return data.data;
 	},
+	toPostData:function (data) {
+		let str = '';
+		for (let item in data){
+			str += item+'='+data[item]+'&'
+		}
+		if (str.length>0){
+			str = str.substring(0,str.length-1);
+		}
+		return str
+	}
 }

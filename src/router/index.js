@@ -3,14 +3,17 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
-import home from '@/components/home'
-import aaa from '@/components/layout'
-import model from '@/components/rbac/model'
+// import home from '@/components/home'
+// import aaa from '@/components/layout'
+// import model from '@/components/rbac/model'
 
 import login from '@/views/layout/login'
 import register from '@/views/layout/register'
 import layout from '@/views/layout/layout'
+import home from '@/views/layout/home'
 import auth from '@/views/auth/auth'
+import role from '@/views/auth/role'
+import basTable from '@/views/page/basTable'
 
 export default new Router({
 	routes:[
@@ -19,11 +22,11 @@ export default new Router({
 			name:'login',
 			component:login
 		},
-    {
-      path:'/register',
-      name:'register',
-      component:register
-    },
+		{
+		  path:'/register',
+		  name:'register',
+		  component:register
+		},
 		{
 			path:'/',
 			component:layout,
@@ -37,6 +40,14 @@ export default new Router({
 					path:'auth',
           name:'auth',
 					component:auth
+				},
+				{
+					path:'role',
+					component:role
+				},
+				{
+					path:'table',
+					component:basTable
 				}
 			]
 		}
