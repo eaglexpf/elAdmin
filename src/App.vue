@@ -33,7 +33,7 @@
             }
             this.$store.commit('setJWTToken',response.data.data.token);
             this.$store.commit('setIsLogin',true);
-            this.$router.push({name:"home"});
+            // this.$router.push({name:"home"});
           }).catch((error)=>{
             this.$notify.error({
               title:"网络请求错误",

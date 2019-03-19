@@ -29,12 +29,13 @@ export default new Router({
 			component:layout,
 			children:[
 				{
-					path:'',
+					path:'/home',
 					name:'home',
 					component:home
 				},
 				{
 					path:'auth',
+          name:'auth',
 					component:auth
 				}
 			]
