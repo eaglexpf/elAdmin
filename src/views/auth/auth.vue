@@ -28,7 +28,7 @@
 
         </div>
 
-        <el-dialog title="添加路由" :visible.sync="dialogFormVisible" custom-class="dialogForm" :close-on-click-modal="false" :before-close="closeModal">
+        <el-dialog title="添加路由" :visible.sync="dialogAddFormVisible" custom-class="dialogForm" :close-on-click-modal="false" :before-close="closeModal">
             <el-form :model="form" :rules="rules" ref="ruleForm" label-width="120px">
                 <el-form-item label="路由名称" prop="name">
                     <el-input v-model="form.name" autocomplete="off"></el-input>
@@ -49,7 +49,7 @@
             </div>
         </el-dialog>
 
-        <el-dialog title="修改路由" :visible.sync="dialogFormVisible" custom-class="dialogForm" :close-on-click-modal="false" :before-close="closeModal">
+        <el-dialog title="修改路由" :visible.sync="dialogUpdateFormVisible" custom-class="dialogForm" :close-on-click-modal="false" :before-close="closeModal">
             <el-form :model="form" :rules="rules" ref="ruleForm" label-width="120px">
                 <el-form-item label="路由名称" prop="name">
                     <el-input v-model="form.name" autocomplete="off"></el-input>
@@ -78,7 +78,8 @@
 		data(){
 			return{
 				data:[],
-				dialogFormVisible:false,
+				dialogAddFormVisible:false,
+				dialogUpdateFormVisible:false,
 				form: {
 					id:0,
 					name: '',
@@ -129,7 +130,8 @@
 					route:''
 				};
                 this.$refs[formName].resetFields();
-                this.dialogFormVisible = false;
+                this.dialogAddFormVisible = false;
+				this.dialogUpdateFormVisible = false;
 			},
             //modal对话框关闭前的回调
 			closeModal:function (done) {
@@ -138,18 +140,18 @@
 			},
             //添加按钮触发事件
             addRoute:function () {
-                this.dialogFormVisible = true;
+                this.dialogAddFormVisible = true;
 			},
             //确定添加触发事件
 			submitAddRoute:function (formName) {
 				this.$refs[formName].validate((valid)=>{
 					if (valid){
-						var param = new URLSearchParams();
-                        param.append('name',this.form.name);
-                        param.append('desc',this.form.desc);
-                        param.append('route',this.form.route);
-                        param.append('parent_id',this.form.parent_id[this.form.parent_id.length-1]);
-						this.$http.post('/auth/route',param).then((response)=>{
+						this.$http.post('/auth/route',this.$common.toPostData({
+                            name:this.form.name,
+                            desc:this.form.desc,
+                            route:this.form.route,
+                            parent_id:this.form.parent_id[this.form.parent_id.length-1]
+                        })).then((response)=>{
                         	console.log(response.data)
                         	if (response.data.code!==0){
                         		this.$notify.warning({
@@ -197,23 +199,22 @@
 				var parent_ids = this.getList(this.data,data.id);
 				parent_ids.pop();
 				this.form.name = data.name;
-				this.form.desc = data.desc;
+				this.form.desc = data.description;
 				this.form.route = data.route;
 				this.form.parent_id = parent_ids;
 				this.form.id = data.id;
-				this.dialogFormVisible = true;
+				this.dialogUpdateFormVisible = true;
             },
             //确定修改触发事件
 			submitUpdateRoute:function (formName) {
 				this.$refs[formName].validate((valid)=>{
 					if (valid){
-						var param = new URLSearchParams();
-						param.append('name',this.form.name);
-						param.append('desc',this.form.desc);
-						param.append('route',this.form.route);
-						param.append('parent_id',this.form.parent_id[this.form.parent_id.length-1]);
-						this.$http.put('/auth/route/'+this.form.id,param).then((response)=>{
-							console.log(response.data)
+						this.$http.put('/auth/route/'+this.form.id,this.$common.toPostData({
+                            name:this.form.name,
+                            desc:this.form.desc,
+                            route:this.form.route,
+                            parent_id:this.form.parent_id[this.form.parent_id.length-1]
+                        })).then((response)=>{
 							if (response.data.code!==0){
 								this.$notify.warning({
 									title:response.data.msg,

@@ -40,7 +40,7 @@
 			}
 		},
 		beforeRouteUpdate(to,from,next){
-
+            next();
 		},
 		computed:{
 			isCollapse:function () {
