@@ -18,7 +18,7 @@
                         <el-button class="pull-right" type="text" size="medium" @click="register">注册账号</el-button>
                     </el-form-item>
                     <el-form-item class="login-btn-item">
-                        <el-button type="primary" @click="loginSubmit()" native-type="submit">登录</el-button>
+                        <el-button type="primary" @click="loginSubmit()">登录</el-button>
                     </el-form-item>
                 </el-form>
             </div>

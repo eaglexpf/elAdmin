@@ -18,7 +18,7 @@
             <el-input type="password" v-model="form.pwd_repeat" autocomplete="off" placeholder="请再次输入密码" suffix-icon="el-icon-setting" :show-password="true"></el-input>
           </el-form-item>
           <el-form-item class="login-btn-item">
-            <el-button type="primary" @click="registerSubmit()" native-type="submit">注册</el-button>
+            <el-button type="primary" @click="registerSubmit()">注册</el-button>
           </el-form-item>
         </el-form>
       </div>
